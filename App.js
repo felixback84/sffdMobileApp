@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// tailwind
+import { TailwindProvider } from 'tailwindcss-react-native'
+// navigation
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// components
+import StackNavigationPublic from './navigation/StackNavigationPublic'
+import StackNavigationAuth from './navigation/StackNavigationAuth'
+import StackNavigationAdmin from './navigation/StackNavigationAdmin'
+
+// redux
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
+
+const user = false
 
 export default function App() {
+  // react native navigator
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Provider store={store}>
+        <TailwindProvider>
+          {
+            !user ? (
+                <>
+                  <StackNavigationPublic/>
+                  {/* <StackNavigationAuth/> */}
+                  </>
+              ) : (
+                <StackNavigationAdmin/>
+              )
+          }
+        </TailwindProvider>
+      </Provider>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
