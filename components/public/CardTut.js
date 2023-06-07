@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {View, StyleSheet, Animated, Image, Text, TouchableOpacity } from 'react-native';
 // card width
-const CARD_WIDTH = 350;
+const CARD_WIDTH = 320;
 
 const CardTut = ({item,index,scrollX}) => {
     // state
@@ -22,8 +22,8 @@ const CardTut = ({item,index,scrollX}) => {
             }`}
         >
             <Animated.View style={[styles.card, ]}>
-                <Image source={{uri:item.image}} style={styles.cardImage} />
-                <Text style={styles.cardTitle}>{item.title}</Text>
+                {/* <Image source={{uri:item.image}} style={styles.cardImage} />
+                <Text style={styles.cardTitle}>{item.title}</Text> */}
             </Animated.View>
         </TouchableOpacity>
     );

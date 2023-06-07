@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 // compoenents
 import WordsSearcher from './WordsSearcher'
-import BussinessSearcher from './BussinessSearcher'
+import CompaniesSearcher from './CompaniesSearcher'
 import ProductsSearcher from './ProductsSearcher'
 import EventsSearcher from './EventsSearcher'
 import OffertsSearcher from './OffertsSearcher'
@@ -22,7 +22,7 @@ const Searcher = () => {
                 {/* squares */}
                 <View style={styles.row}>
                     {/* bussiness */}
-                    <BussinessSearcher/>
+                    <CompaniesSearcher/>
                     {/* products */}
                     <ProductsSearcher/>
                 </View>

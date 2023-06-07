@@ -7,7 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import HeaderShow from '../../components/public/HeaderShow'
 import CardsTuts from '../../components/public/CardsTuts'
 import Searcher from  '../../components/searcher/Searcher'
-import Auth from  '../../components/auth/Auth'
+import Auth from  '../../components/public/Auth'
+import PublicNav from '../../layout/PublicNav'
 
 const LandingScreen = () => {
     // navigation
@@ -40,6 +41,8 @@ const LandingScreen = () => {
                 {/* auth */}
                 <Auth/>
             </ScrollView>
+            {/* layout nav
+            <PublicNav/> */}
         </SafeAreaView>
     );
 }

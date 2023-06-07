@@ -1,19 +1,25 @@
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, View, TouchableOpacity, Pressable} from 'react-native';
+// navigation
+import { useNavigation } from '@react-navigation/native';
 // components
 import WordsSearcher from './WordsSearcher';
 // icons
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { 
-    faX,
-    faMagnifyingGlass,
-    faBuilding,
-    faArrowCircleRight,
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome' 
+import { faX, faMagnifyingGlass, faBuilding, faArrowCircleRight,
 } from '@fortawesome/free-solid-svg-icons'
+// radiobutton
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
-const BussinesSearcher = () => {
+const CompaniesSearcher = () => {
+    // navigation obj
+    const navigation = useNavigation()
     // modal state
-    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false)
+    // radio btn stuff
+    let radio_props = [
+        {value: 0 },
+    ];
     return (
         <View style={styles.container}>
             <Modal
@@ -33,18 +39,18 @@ const BussinesSearcher = () => {
                                 className="rounded-full bg-gray-100 p-3 absolute top-1 right-1"
                                 onPress={() => setModalVisible(!modalVisible)}
                             >
-                                <FontAwesomeIcon icon={faX} size={30} color="#3d3d3d" />
+                                <FontAwesomeIcon icon={faX} size={20} color="#3d3d3d" />
                             </TouchableOpacity>
                             {/* bussines icon */}
                             <FontAwesomeIcon  
-                                icon={ faMagnifyingGlass }  
+                                icon={ faBuilding }  
                                 color="gray" 
                                 size={60}
                                 style={{marginBottom:20}}
                             />
                             {/* title searcher */}
                             <Text className="text-5xl text-gray-500">
-                                Bussiness
+                                Companies
                             </Text>
                             {/* description searcher */}
                             <Text style={styles.modalText}>
@@ -55,6 +61,19 @@ const BussinesSearcher = () => {
                             <WordsSearcher/>
                             <WordsSearcher/>
                             <WordsSearcher/>
+                            {/* btn */}
+                            <TouchableOpacity 
+                                className="rounded-full bg-[#00CCBB] p-4 mt-2"
+                                onPress={() => {
+                                    navigation.navigate("SearcherResultsPublic")
+                                    setModalVisible(!modalVisible)
+                                }}
+                            >
+                                <Text className="text-center text-white text-lg font-bold">
+                                    Search
+                                </Text>
+                            </TouchableOpacity>
+
                         </View>
                     </View>
                 </View>
@@ -66,22 +85,28 @@ const BussinesSearcher = () => {
                 onPress={() => setModalVisible(true)}>
                 <View className="flex-1 justify-around">
                     <View className="flex-row justify-center">
+                        <RadioForm
+                            className="absolute top-6 right-0"
+                            radio_props={radio_props}
+                            initial={0}
+                            // onPress={(value) => {this.setState({value:value})}}
+                        />
                         <FontAwesomeIcon  
                             icon={ faBuilding }  
                             color="#3d3d3d" 
-                            size={60}
-                            style={{marginVertical:20,}}
+                            size={50}
+                            style={{marginVertical:50,}}
                         />
                     </View>
-                    <View className="flex-row justify-center my-2">
-                        <Text className="text-xl text-white ">Bussiness</Text>
+                    <View className="flex-row justify-center mb-12">
+                        <Text className="text-xl text-neutral-800">Companies</Text>
                     </View>
                     <View className="flex-row justify-center">
                         <FontAwesomeIcon  
                             icon={ faArrowCircleRight }  
                             color="#3d3d3d" 
-                            size={40}
-                            style={{marginVertical:20,}}
+                            size={30}
+                            style={{marginBottom:20,}}
                         />
                     </View>
                 </View>
@@ -135,6 +160,8 @@ const styles = StyleSheet.create({
     squareBtn: {
         margin:10,
         padding:10,
+        paddingRight:5,
+        paddingTop:5,
         width: 160,
         height: 180,
         borderRadius:40,
@@ -145,4 +172,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default BussinesSearcher;
+export default CompaniesSearcher;

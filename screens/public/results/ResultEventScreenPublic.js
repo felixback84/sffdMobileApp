@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
-const Auth = () => {
+const ResultEventScreenPublic = () => {
     return (
         <View>
             
@@ -11,4 +11,4 @@ const Auth = () => {
 
 const styles = StyleSheet.create({})
 
-export default Auth;
+export default ResultEventScreenPublic;
